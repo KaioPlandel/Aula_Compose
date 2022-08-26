@@ -21,37 +21,39 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            Column(Modifier.fillMaxSize()) {
 
+            Column(modifier = Modifier.fillMaxSize()) {
                 val color = remember {
                     mutableStateOf(Color.Yellow)
                 }
 
                 ColorBox(
-                    Modifier
-                        .weight(1f).fillMaxSize()
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .weight(1f)
                 ){
                     color.value = it
                 }
                 Box(
                     modifier = Modifier
-                        .background(color = color.value)
+                        .background(color.value)
                         .weight(1f)
-                        .fillMaxSize())
+                        .fillMaxSize()
+                ) {
+
+                }
             }
+
+
         }
     }
 }
 
 @Composable
 fun ColorBox(
-    modifier: Modifier = Modifier,
+    modifier: Modifier,
     updateColor: (Color) -> Unit
 ) {
-
-//    val color = remember { //remeber lembra do primeiro valor quando chamar a variavel denovo
-//        mutableStateOf(Color.Yellow)
-//    }
     Box(
         modifier = modifier
             .background(Color.Red)
@@ -68,7 +70,10 @@ fun ColorBox(
     ) {
 
     }
+
 }
+
+
 
 
 
